@@ -1,21 +1,26 @@
-from http.server import HTTPServer, SimpleHTTPRequestHandler
-from handlers import RequestHandler
-from validation import validate_openapi_spec
+from http.server import HTTPServer
+from .handlers import RequestHandler
+from .validation import validate_openapi_spec
+
 
 class SimpleHTTPServer:
-    def __init__(self, host, port=8080, handler="DefaultHandler") -> None:
+    """
+    class to initiate http servers
+    """
+
+    def __init__(self, host, port=5000) -> None:
         """
         Initialize the server with the host and port.
         """
         self.host = host
         self.port = port
-        self.handler = handler
         self.server = None
 
     def start_server(self):
-        self.server = HTTPServer(self.host, self.port, self.handler)
+        self.server = HTTPServer((self.host, self.port), RequestHandler)
         try:
-            validate_openapi_spec("./spec.yml")
+            validate_openapi_spec("/home/yassine/yassine/Pyth_playground/api/spec.yml")
+            print(f"Starting server on {self.host}:{self.port}")
             self.server.serve_forever()
         except KeyboardInterrupt:
             print("\nShutting down server...")

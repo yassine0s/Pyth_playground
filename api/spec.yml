@@ -5,7 +5,27 @@ info:
 paths:
   /request:
     get:
-      summary: Get response from handler1
+      summary: Get response from the server
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+    post:
+      summary: Post data to the server
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
       responses:
         "200":
           description: Successful response
