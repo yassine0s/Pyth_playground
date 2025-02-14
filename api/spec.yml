@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: Simple HTTP Server API
+  version: 1.0.0
+paths:
+  /request:
+    get:
+      summary: Get response from handler1
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
