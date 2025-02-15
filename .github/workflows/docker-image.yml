@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "Pyth_playground" ]
+    branches: [ "pyopenapi" ]
   pull_request:
     branches: [ "main" ]
 
